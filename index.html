@@ -5,18 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TOEIC Speaking – Express an Opinion</title>
 
+  <!--
+    ✅ This file uses the EXACT same formatting system as your attached index
+    (same CSS structure + same component classes, only content adapted to Task 5).
+  -->
   <style>
     :root{
-      /* === Rise-like palette (same as attached) === */
+      /* === Rise-like palette (easy to tweak) === */
       --bg:#f6f7f9;
       --surface:#ffffff;
       --text:#111827;
       --muted:#6b7280;
       --border:#e5e7eb;
 
-      /* Primary (Rise-ish blue) */
-      --primary:#2b6df3;
-      --primaryHover:#1f5fe0;
+      /* Primary */
+      --primary:#2563eb;
+      --primaryHover:#1e4fd6;
 
       /* Neutrals */
       --soft:#f3f4f6;
@@ -28,11 +32,11 @@
       --success:#16a34a;
       --danger:#ef4444;
 
-      --shadow: 0 10px 26px rgba(17,24,39,.08);
-      --radius: 16px;
-      --radiusSm: 12px;
+      --shadow:0 10px 26px rgba(17,24,39,.08);
+      --radius:16px;
+      --radiusSm:12px;
 
-      --focus: 0 0 0 3px rgba(43,109,243,.22);
+      --focus: 0 0 0 3px rgba(37,99,235,.22);
     }
 
     *{ box-sizing:border-box; }
@@ -52,9 +56,7 @@
     }
 
     /* Header */
-    .header{
-      margin-bottom: 14px;
-    }
+    .header{ margin-bottom: 14px; }
     .title{
       margin:0;
       font-size: 22px;
@@ -77,16 +79,14 @@
       overflow:hidden;
     }
 
-    .section{
-      padding: 18px;
-    }
+    .section{ padding: 18px; }
 
-    /* Prompt block (same as attached) */
+    /* Prompt block */
     .prompt{
       border:1px solid var(--accentBorder);
       background: linear-gradient(0deg, rgba(231,240,255,.55), rgba(231,240,255,.55)), #fff;
       border-radius: var(--radius);
-      padding: 18px;
+      padding: 14px;
       position: relative;
       overflow:hidden;
     }
@@ -98,16 +98,14 @@
       background: var(--primary);
       opacity: .95;
     }
-    .promptInner{
-      padding-left: 10px;
-    }
+    .promptInner{ padding-left: 10px; }
 
     .promptHead{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
     .promptTitle{
       margin:0;
@@ -139,26 +137,65 @@
     .state.recording .dot{ background: var(--danger); }
     .state.done .dot{ background: var(--success); }
 
+    .promptInner p{ margin:0; }
+    .promptInner p + p{ margin-top: 6px; }
+
     .promptText{
-      margin:0;
       color: var(--text);
-      font-size: 15px;
-      line-height: 1.65;
+      font-size: 14px;
+      line-height: 1.6;
       white-space: pre-wrap;
       font-style: italic;
     }
 
     .instruction{
-      margin-top: 12px;
-      padding: 12px;
+      margin-top: 10px;
+      padding: 10px;
       border-radius: var(--radiusSm);
-      border:1px solid rgba(43,109,243,.20);
+      border:1px solid rgba(37,99,235,.20);
       background: rgba(255,255,255,.75);
       font-size: 13px;
       color:#1f3b7a;
     }
 
-    /* Controls area (same as attached) */
+    /* Question blocks (same system as attached index) */
+    .qList{
+      margin-top: 10px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .qBlock{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px;
+      background:#fff;
+    }
+    .qHeader{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 500;
+      font-size: 13px;
+      margin: 0 0 8px;
+      color: #6b7280;
+    }
+    .questionText{
+      margin: 10px 0 0;
+      font-size: 14px;
+      display:flex;
+      gap:8px;
+      align-items:flex-start;
+      color:#374151;
+      line-height: 1.6;
+    }
+    .questionIcon{
+      font-size:16px;
+      line-height:1.4;
+      flex: 0 0 auto;
+    }
+
+    /* Controls area */
     .panel{
       margin-top: 14px;
       border:1px solid var(--border);
@@ -175,11 +212,6 @@
       flex-wrap:wrap;
       margin-bottom: 12px;
     }
-    .statusLine{
-      color: var(--muted);
-      font-size: 13px;
-    }
-
     .timerChip{
       display:inline-flex;
       align-items:center;
@@ -197,8 +229,12 @@
       font-variant-numeric: tabular-nums;
       letter-spacing: .02em;
     }
+    .statusLine{
+      color: var(--muted);
+      font-size: 13px;
+    }
 
-    /* Buttons (same as attached) */
+    /* Buttons */
     .controls{
       display:flex;
       gap:10px;
@@ -215,28 +251,10 @@
     }
     button:active{ transform: translateY(1px); }
     button:disabled{ opacity:.55; cursor:not-allowed; }
-
-    button:focus-visible{
-      outline:none;
-      box-shadow: var(--focus);
-    }
+    button:focus-visible{ outline:none; box-shadow: var(--focus); }
 
     .btnPrimary{ background: var(--primary); color:#fff; }
     .btnPrimary:hover{ background: var(--primaryHover); }
-
-    .btnSecondary{
-      background:#f1f5f9;
-      color:#1e3a8a;
-      border:1px solid #c7d2fe;
-    }
-    .btnSecondary:hover{ background:#e0e7ff; }
-
-    .btnNeutral{
-      background:#f1f5f9;
-      color:#1f2937;
-      border:1px solid #d1d5db;
-    }
-    .btnNeutral:hover{ background:#e5e7eb; }
 
     .btnDanger{
       background:#fee2e2;
@@ -245,6 +263,13 @@
     }
     .btnDanger:hover{ background:#fecaca; }
 
+    .btnNeutral{
+      background:#f1f5f9;
+      color:#1f2937;
+      border:1px solid #d1d5db;
+    }
+    .btnNeutral:hover{ background:#e5e7eb; }
+
     .btnSuccess{
       background:#dcfce7;
       color:#166534;
@@ -252,7 +277,7 @@
     }
     .btnSuccess:hover{ background:#bbf7d0; }
 
-    /* Audio block (same as attached) */
+    /* Audio block */
     .audioBlock{
       margin-top: 12px;
       padding: 12px;
@@ -266,17 +291,40 @@
       border-radius: 12px;
     }
 
-    .actionsRow{
+    .bottomActions{
       display:flex;
-      gap:10px;
+      gap:12px;
+      margin-top: 12px;
       flex-wrap:wrap;
-      margin-top: 10px;
     }
-    .actionsRow button{
-      flex: 1 1 240px;
+    .bottomActions > *{
+      flex: 1 1 260px;
     }
 
-    /* Saved takes (same as attached) */
+    .btnOutline{
+      background:#f8fafc;
+      color:#6b7280;
+      border:1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 11px 14px;
+      font-size: 14px;
+      font-weight: 750;
+      cursor:pointer;
+      transition: background .15s ease, transform .02s ease, box-shadow .15s ease, opacity .15s ease;
+    }
+    .btnOutline:hover{ background:#eef2f7; }
+    .btnOutline:disabled{ opacity:.55; cursor:not-allowed; }
+
+    .btnOutlineReturn{
+      border-color: rgba(37,99,235,.35);
+      color: #1e3a8a;
+      background: rgba(37,99,235,.06);
+    }
+    .btnOutlineReturn:hover{
+      background: rgba(37,99,235,.10);
+    }
+
+    /* Saved takes */
     .saved{
       border-top:1px solid var(--border);
       padding: 16px 18px 18px;
@@ -330,7 +378,6 @@
       font-size:12px;
       color:var(--muted);
     }
-
     .savedActions{
       display:flex;
       gap:8px;
@@ -351,9 +398,7 @@
       background:#f8fafc;
       cursor:pointer;
     }
-    .linkBtn:hover{
-      background:#eef2f7;
-    }
+    .linkBtn:hover{ background:#eef2f7; }
 
     .dangerLink{
       border-color:#fecaca;
@@ -362,7 +407,7 @@
     }
     .dangerLink:hover{ background:#ffecec; }
 
-    /* Modal overlay (same as attached) */
+    /* Modal overlay */
     .overlay{
       position:fixed;
       inset:0;
@@ -420,22 +465,28 @@
                 <span id="stateText">Ready</span>
               </div>
             </div>
-            <br>
 
             <p class="promptText">Play the audio question below, then prepare your opinion.</p>
-            <br>
 
-            <!-- Use the same audioBlock styling as the attached index (no new style system) -->
-            <div class="audioBlock">
-              <div class="statusLine">🔊 Question</div>
-              <audio controls preload="metadata">
-                <source src="toeic-speaking-task-5.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
+            <!-- Question (same block system as the attached index) -->
+            <div class="qList" aria-label="Question">
+              <div class="qBlock">
+                <div class="qHeader">
+                  <span aria-hidden="true">🔊</span> Question
+                </div>
 
-              <div class="statusLine" style="margin-top:10px;">
-                💬 Some companies are considering a four-day work week. Do you think this is a good idea?
-                Explain your opinion and give reasons and examples to support it.
+                <audio controls preload="metadata">
+                  <source src="toeic-speaking-task-5.mp3" type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+
+                <div class="questionText">
+                  <span class="questionIcon" aria-hidden="true">💬</span>
+                  <div>
+                    Some companies are considering a four-day work week. Do you think this is a good idea?
+                    Explain your opinion and give reasons and examples to support it.
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -465,9 +516,9 @@
             <div class="statusLine">Listen to your take:</div>
             <audio id="player" controls></audio>
 
-            <div class="actionsRow">
-              <button id="download" class="btnNeutral" disabled>⬇️ Download this take</button>
-              <button id="returnBtn" class="btnSecondary">↩️ Return to the module</button>
+            <div class="bottomActions">
+              <button id="download" class="btnOutline" disabled>⬇️ Download this take</button>
+              <button id="returnBtn" class="btnOutline btnOutlineReturn">↩️ Return to the module</button>
             </div>
           </div>
         </section>
@@ -497,8 +548,8 @@
 
   <script>
     /***********************
-    * IndexedDB (persist takes)
-    ***********************/
+     * IndexedDB persistence
+     ***********************/
     const DB_NAME = "toeic_recorder_db_task5";
     const DB_VERSION = 1;
     const STORE = "takes";
@@ -552,25 +603,25 @@
     }
 
     /***********************
-    * UI + Recorder
-    ***********************/
-    const startBtn = document.getElementById("start");
-    const stopBtn  = document.getElementById("stop");
-    const resetBtn = document.getElementById("reset");
-    const keepBtn  = document.getElementById("keep");
-    const dlBtn    = document.getElementById("download");
-    const returnBtn= document.getElementById("returnBtn");
+     * UI + Recorder
+     ***********************/
+    const startBtn  = document.getElementById("start");
+    const stopBtn   = document.getElementById("stop");
+    const resetBtn  = document.getElementById("reset");
+    const keepBtn   = document.getElementById("keep");
+    const dlBtn     = document.getElementById("download");
+    const returnBtn = document.getElementById("returnBtn");
 
-    const player   = document.getElementById("player");
-    const timerEl  = document.getElementById("timer");
-    const statusEl = document.getElementById("status");
-    const savedList= document.getElementById("savedList");
+    const player    = document.getElementById("player");
+    const timerEl   = document.getElementById("timer");
+    const statusEl  = document.getElementById("status");
+    const savedList = document.getElementById("savedList");
 
-    const overlay  = document.getElementById("overlay");
-    const okBtn    = document.getElementById("okBtn");
+    const overlay   = document.getElementById("overlay");
+    const okBtn     = document.getElementById("okBtn");
 
-    const stateChip= document.getElementById("stateChip");
-    const stateText= document.getElementById("stateText");
+    const stateChip = document.getElementById("stateChip");
+    const stateText = document.getElementById("stateText");
 
     let mediaRecorder = null;
     let chunks = [];
@@ -605,7 +656,6 @@
     }
 
     function setState(mode){
-      // mode: ready | recording | done
       stateChip.classList.remove("recording","done");
       if(mode === "recording"){
         stateChip.classList.add("recording");
