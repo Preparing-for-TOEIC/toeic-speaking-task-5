@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TOEIC Speaking – Express an Opinion</title>
 
-  <!-- ✅ SAME CSS/FORMAT as the attached index (Task 3) -->
   <style>
     :root{
-      /* Same formatting system as Task 3 (attached) */
+      /* EXACT same formatting as the attached index */
       --bg:#f6f7f9;
       --surface:#ffffff;
       --text:#111827;
@@ -24,8 +23,9 @@
       --soft:#f1f5f9;
       --softHover:#e5e7eb;
 
-      --dangerBg:#ef4444;
-      --dangerText:#ffffff;
+      --dangerBg:#fee2e2;
+      --dangerText:#b91c1c;
+      --dangerBorder:#fecaca;
 
       --successBg:#dcfce7;
       --successText:#166534;
@@ -38,6 +38,7 @@
       --shadow:0 10px 26px rgba(17,24,39,.08);
       --radius:16px;
       --radiusSm:12px;
+
       --focus: 0 0 0 3px rgba(37,99,235,.22);
     }
 
@@ -46,8 +47,7 @@
       margin:0;
       background:var(--bg);
       color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
-        "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       line-height:1.5;
     }
 
@@ -99,6 +99,7 @@
       opacity: .95;
     }
     .promptInner{ padding-left: 10px; }
+
     .promptHead{
       display:flex;
       align-items:center;
@@ -136,7 +137,7 @@
     .state.recording .dot{ background:#ef4444; }
     .state.done .dot{ background:#16a34a; }
 
-    .promptInner p{ margin: 0; }
+    .promptInner p{ margin:0; }
     .promptInner p + p{ margin-top: 6px; }
 
     .promptText{
@@ -146,18 +147,23 @@
       white-space: pre-wrap;
     }
 
-    /* Question blocks (same as Task 3) */
-    .qList{
-      margin-top: 10px;
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
+    .instruction{
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: var(--radiusSm);
+      border:1px solid rgba(37,99,235,.20);
+      background: rgba(255,255,255,.75);
+      font-size: 13px;
+      color:#1f3b7a;
     }
+
+    /* Question blocks */
     .qBlock{
       border:1px solid var(--border);
       border-radius: var(--radius);
       padding: 12px;
       background:#fff;
+      margin-top: 8px;
     }
     .qHeader{
       display:flex;
@@ -193,16 +199,6 @@
       font-size:16px;
       line-height:1.4;
       flex: 0 0 auto;
-    }
-
-    .instruction{
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: var(--radiusSm);
-      border:1px solid rgba(37,99,235,.20);
-      background: rgba(255,255,255,.75);
-      font-size: 13px;
-      color:#1f3b7a;
     }
 
     /* Controls panel */
@@ -267,12 +263,13 @@
     .btnDanger{
       background: var(--dangerBg);
       color: var(--dangerText);
+      border:1px solid var(--dangerBorder);
     }
-    .btnDanger:hover{ background:#dc2626; }
+    .btnDanger:hover{ background: var(--dangerBorder); }
 
     .btnNeutral{
       background: var(--soft);
-      color: #1f2937;
+      color:#1f2937;
       border:1px solid #d1d5db;
     }
     .btnNeutral:hover{ background: var(--softHover); }
@@ -282,23 +279,9 @@
       color: var(--successText);
       border:1px solid var(--successBorder);
     }
-    .btnSuccess:hover{ background: #bbf7d0; }
+    .btnSuccess:hover{ background:#bbf7d0; }
 
-    .btnDownload{
-      background:#f8fafc;
-      color:#1f2937;
-      border:1px solid #cbd5e1;
-    }
-    .btnDownload:hover{ background:#eef2f7; }
-
-    .btnReturn{
-      background: var(--secondaryBg);
-      color: var(--secondaryText);
-      border:1px solid var(--secondaryBorder);
-      font-weight: 700;
-    }
-    .btnReturn:hover{ background:#e0e7ff; }
-
+    /* Audio block */
     .audioBlock{
       margin-top: 12px;
       padding: 12px;
@@ -311,13 +294,49 @@
       margin-top: 6px;
       border-radius: 12px;
     }
+
+    /* Outline buttons (EXACT from attached index) */
+    .btnOutline{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      width:100%;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-weight: 800;
+      border:1px solid rgba(37,99,235,.30);
+      background: rgba(37,99,235,.06);
+      color:#0f2a73;
+      cursor:pointer;
+      text-decoration:none;
+      transition: background .15s ease, border-color .15s ease, transform .02s ease, opacity .15s ease;
+    }
+    .btnOutline:hover{
+      background: rgba(37,99,235,.10);
+      border-color: rgba(37,99,235,.45);
+    }
+    .btnOutline:active{ transform: translateY(1px); }
+    .btnOutline[aria-disabled="true"]{
+      opacity:.55;
+      cursor:not-allowed;
+      pointer-events:none;
+    }
+    .btnOutlineReturn{
+      background: rgba(255,255,255,.85);
+      border-color: rgba(37,99,235,.40);
+    }
+
     .actionsRow{
       display:flex;
       gap:10px;
-      flex-wrap:wrap;
       margin-top: 10px;
+      flex-wrap:wrap;
     }
-    .actionsRow button{ flex: 1 1 240px; }
+    .actionsRow > *{
+      flex: 1 1 240px;
+    }
 
     /* Saved takes */
     .saved{
@@ -348,6 +367,15 @@
       flex-direction:column;
       gap: 10px;
     }
+    .savedEmpty{
+      border:1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
     .savedItem{
       border:1px solid var(--border);
       border-radius: var(--radius);
@@ -377,19 +405,20 @@
       gap:8px;
       flex-wrap:wrap;
     }
+
     .linkBtn{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding: 9px 12px;
+      padding: 11px 14px;
       border:1px solid #cbd5e1;
       border-radius: 12px;
-      font-size: 13px;
+      font-size: 14px;
+      font-weight: 600;
       text-decoration:none;
       color:#1f2937;
       background:#f8fafc;
       cursor:pointer;
-      font-weight: 650;
     }
     .linkBtn:hover{ background:#eef2f7; }
     .dangerLink{
@@ -398,6 +427,18 @@
       background:#fff5f5;
     }
     .dangerLink:hover{ background:#ffecec; }
+
+    .savedFooter{
+      margin-top: 12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end; /* return button placement like attached */
+    }
+    .savedFooter .btnOutline{
+      width:auto;
+      min-width: 260px;
+    }
 
     /* Modal overlay */
     .overlay{
@@ -448,7 +489,7 @@
     <div class="card">
       <div class="section">
 
-        <!-- Prompt (Task 3 structure) -->
+        <!-- Prompt -->
         <section class="prompt" id="promptBox" aria-labelledby="promptTitle">
           <div class="promptInner">
             <div class="promptHead">
@@ -459,22 +500,19 @@
               </div>
             </div>
 
-            <p class="promptText">Play the audio question below. When you're ready, record your answer.</p>
+            <p class="promptText">Play the audio question below, then prepare your opinion.</p>
 
-            <div class="qList" aria-label="Question">
-              <div class="qBlock">
-                <div class="qHeader"> Question</div>
-                <audio controls preload="metadata">
-                  <source src="toeic-speaking-task-5.mp3" type="audio/mpeg" />
-                  Your browser does not support the audio element.
-                </audio>
-                <div class="questionText">
-                  <span class="questionIcon" aria-hidden="true">💬</span>
-                  <span>
-                    Some companies are considering a four-day work week. Do you think this is a good idea?
-                    Explain your opinion and give reasons and examples to support it.
-                  </span>
-                </div>
+            <!-- Single question block (same component as Task 3) -->
+            <div class="qBlock" aria-label="Question">
+              <div class="qHeader"><span class="qNum">Q</span> Question</div>
+              <audio controls preload="metadata">
+                <source src="toeic-speaking-task-5.mp3" type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+              <div class="questionText">
+                <span class="questionIcon" aria-hidden="true">💬</span>
+                Some companies are considering a four-day work week. Do you think this is a good idea?
+                Explain your opinion and give reasons and examples to support it.
               </div>
             </div>
 
@@ -502,9 +540,9 @@
             <div class="statusLine">Listen to your take:</div>
             <audio id="player" controls></audio>
 
+            <!-- EXACT placement like attached: only download here -->
             <div class="actionsRow">
-              <button id="download" class="btnDownload" disabled>⬇️ Download this take</button>
-              <button id="returnBtn" class="btnReturn">↩️ Return to the module</button>
+              <a id="downloadLink" class="btnOutline" href="#" aria-disabled="true">⬇️ Download current take</a>
             </div>
           </div>
         </section>
@@ -516,7 +554,13 @@
           <h3>Saved takes</h3>
           <p class="savedNote">💡 Tip: If you’re using a shared computer, remove your takes before leaving.</p>
         </div>
+
         <div class="savedList" id="savedList"></div>
+
+        <!-- EXACT placement like attached: Return button lives in Saved area -->
+        <div class="savedFooter">
+          <a id="returnLink" class="btnOutline btnOutlineReturn" href="#">↩️ Return to the module</a>
+        </div>
       </div>
     </div>
   </div>
@@ -589,25 +633,26 @@
     }
 
     /***********************
-     * Recorder UI + chip
+     * UI + Recorder
      ***********************/
-    const startBtn  = document.getElementById("start");
-    const stopBtn   = document.getElementById("stop");
-    const resetBtn  = document.getElementById("reset");
-    const keepBtn   = document.getElementById("keep");
-    const dlBtn     = document.getElementById("download");
-    const returnBtn = document.getElementById("returnBtn");
+    const startBtn = document.getElementById("start");
+    const stopBtn  = document.getElementById("stop");
+    const resetBtn = document.getElementById("reset");
+    const keepBtn  = document.getElementById("keep");
 
-    const player    = document.getElementById("player");
-    const timerEl   = document.getElementById("timer");
-    const statusEl  = document.getElementById("status");
-    const savedList = document.getElementById("savedList");
+    const downloadLink = document.getElementById("downloadLink");
+    const returnLink   = document.getElementById("returnLink");
 
-    const overlay   = document.getElementById("overlay");
-    const okBtn     = document.getElementById("okBtn");
+    const player   = document.getElementById("player");
+    const timerEl  = document.getElementById("timer");
+    const statusEl = document.getElementById("status");
+    const savedList= document.getElementById("savedList");
 
-    const stateChip = document.getElementById("stateChip");
-    const stateText = document.getElementById("stateText");
+    const overlay  = document.getElementById("overlay");
+    const okBtn    = document.getElementById("okBtn");
+
+    const stateChip= document.getElementById("stateChip");
+    const stateText= document.getElementById("stateText");
 
     let mediaRecorder = null;
     let chunks = [];
@@ -651,6 +696,16 @@
       }
     }
 
+    function disableDownload(){
+      downloadLink.setAttribute("aria-disabled","true");
+      downloadLink.href = "#";
+    }
+    function enableDownload(url, filename){
+      downloadLink.removeAttribute("aria-disabled");
+      downloadLink.href = url;
+      downloadLink.download = filename;
+    }
+
     function resetCurrentTakeUI(){
       currentBlob = null;
       if(currentUrl){
@@ -659,7 +714,7 @@
       }
       player.removeAttribute("src");
       player.load();
-      dlBtn.disabled = true;
+      disableDownload();
       keepBtn.disabled = true;
       resetBtn.disabled = true;
     }
@@ -668,6 +723,7 @@
       stopTimer();
       seconds = 0;
       setTimer(0);
+
       statusEl.textContent = "Ready";
       setState("ready");
 
@@ -688,17 +744,6 @@
       return types.find(t => window.MediaRecorder && MediaRecorder.isTypeSupported(t)) || "";
     }
 
-    function downloadBlob(blob, filename){
-      const a = document.createElement("a");
-      const url = URL.createObjectURL(blob);
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 500);
-    }
-
     function showOverlay(){ overlay.style.display = "flex"; }
     function hideOverlay(){ overlay.style.display = "none"; }
 
@@ -707,8 +752,14 @@
       if(e.target === overlay) hideOverlay();
     });
 
-    function renderSavedTake({ id, blob, durationSec }, takeNumber){
+    function fmtDuration(sec){
+      return `${sec}s`;
+    }
+
+    function renderSavedTake({ id, blob, durationSec, createdAt }, takeNumber){
       const savedUrl = URL.createObjectURL(blob);
+      const savedAt = createdAt ? new Date(createdAt) : null;
+      const savedText = savedAt ? `saved ${savedAt.toLocaleString()}` : "";
 
       const item = document.createElement("div");
       item.className = "savedItem";
@@ -719,7 +770,8 @@
 
       const label = document.createElement("div");
       label.className = "savedLabel";
-      label.innerHTML = `<strong>Take ${takeNumber}</strong> <span class="tag">• ${durationSec}s</span>`;
+      label.innerHTML = `<strong>Take ${takeNumber}</strong>
+        <span class="tag">• ${fmtDuration(durationSec)}${savedText ? " • " + savedText : ""}</span>`;
 
       const actions = document.createElement("div");
       actions.className = "savedActions";
@@ -740,7 +792,7 @@
         URL.revokeObjectURL(savedUrl);
         item.remove();
         statusEl.textContent = "Take removed.";
-        await loadSavedTakes(); // renumber
+        await loadSavedTakes(); // renumber + empty state
       };
 
       actions.appendChild(downloadBtn);
@@ -755,15 +807,25 @@
 
       item.appendChild(top);
       item.appendChild(audio);
-
       return item;
     }
 
     async function loadSavedTakes(){
       savedList.innerHTML = "";
       const takes = await getAllTakesFromDB();
-      takes.sort((a,b) => a.createdAt - b.createdAt);
-      takes.forEach((t, idx) => savedList.appendChild(renderSavedTake(t, idx + 1)));
+      takes.sort((a,b) => (a.createdAt || 0) - (b.createdAt || 0));
+
+      if(takes.length === 0){
+        const empty = document.createElement("div");
+        empty.className = "savedEmpty";
+        empty.textContent = "No takes saved yet.";
+        savedList.appendChild(empty);
+        return;
+      }
+
+      takes.forEach((t, idx) => {
+        savedList.appendChild(renderSavedTake(t, idx + 1));
+      });
     }
 
     // Init
@@ -777,7 +839,6 @@
         statusEl.textContent = "Requesting microphone…";
 
         stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-
         const mimeType = getSupportedMimeType();
         mediaRecorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
 
@@ -807,18 +868,20 @@
           stopBtn.disabled = true;
           startBtn.disabled = false;
 
-          statusEl.textContent = "Recording finished";
+          statusEl.textContent = "Saved locally (not submitted).";
           setState("done");
 
           resetBtn.disabled = false;
 
           const blob = new Blob(chunks, { type: mediaRecorder.mimeType || "audio/webm" });
           currentBlob = blob;
-
           currentUrl = URL.createObjectURL(blob);
           player.src = currentUrl;
 
-          dlBtn.disabled = false;
+          enableDownload(
+            currentUrl,
+            `task5-take-${new Date().toISOString().slice(0,19).replace(/[:T]/g,"-")}.webm`
+          );
           keepBtn.disabled = false;
 
           stopMic();
@@ -854,23 +917,6 @@
 
     resetBtn.onclick = () => resetUI();
 
-    dlBtn.onclick = () => {
-      if(!currentBlob) return;
-      const filename = `task5-take-${new Date().toISOString().slice(0,19).replace(/[:T]/g,"-")}.webm`;
-      downloadBlob(currentBlob, filename);
-    };
-
-    returnBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      statusEl.textContent = "Returning to the module…";
-      window.close();
-
-      setTimeout(() => {
-        showOverlay();
-        statusEl.textContent = "Please close this tab to return to the module.";
-      }, 250);
-    });
-
     keepBtn.onclick = async () => {
       if(!currentBlob) return;
       try{
@@ -878,12 +924,23 @@
         await addTakeToDB({ blob: currentBlob, durationSec: seconds });
         await loadSavedTakes();
         statusEl.textContent = "Take saved on this device.";
+        keepBtn.disabled = true;
       } catch(err){
         console.error(err);
         statusEl.textContent = "Save failed.";
         alert("Saving failed. Your browser may be blocking storage for this page.");
       }
     };
+
+    returnLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      statusEl.textContent = "Returning to the module…";
+      window.close();
+      setTimeout(() => {
+        showOverlay();
+        statusEl.textContent = "Please close this tab to return to the module.";
+      }, 250);
+    });
   </script>
 </body>
 </html>
