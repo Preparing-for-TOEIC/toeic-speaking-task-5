@@ -7,7 +7,6 @@
 
   <style>
     :root{
-      /* EXACT same formatting as the attached index */
       --bg:#f6f7f9;
       --surface:#ffffff;
       --text:#111827;
@@ -23,22 +22,13 @@
       --soft:#f1f5f9;
       --softHover:#e5e7eb;
 
-      --dangerBg:#fee2e2;
-      --dangerText:#b91c1c;
-      --dangerBorder:#fecaca;
-
       --successBg:#dcfce7;
       --successText:#166534;
       --successBorder:#86efac;
 
-      --secondaryBg:#f1f5f9;
-      --secondaryText:#1e3a8a;
-      --secondaryBorder:#c7d2fe;
-
       --shadow:0 10px 26px rgba(17,24,39,.08);
       --radius:16px;
       --radiusSm:12px;
-
       --focus: 0 0 0 3px rgba(37,99,235,.22);
     }
 
@@ -47,7 +37,8 @@
       margin:0;
       background:var(--bg);
       color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+        "Apple Color Emoji","Segoe UI Emoji";
       line-height:1.5;
     }
 
@@ -81,7 +72,7 @@
 
     .section{ padding: 18px; }
 
-    /* Prompt block */
+    /* Prompt */
     .prompt{
       border:1px solid var(--accentBorder);
       background: linear-gradient(0deg, rgba(231,240,255,.55), rgba(231,240,255,.55)), #fff;
@@ -99,7 +90,6 @@
       opacity: .95;
     }
     .promptInner{ padding-left: 10px; }
-
     .promptHead{
       display:flex;
       align-items:center;
@@ -137,7 +127,7 @@
     .state.recording .dot{ background:#ef4444; }
     .state.done .dot{ background:#16a34a; }
 
-    .promptInner p{ margin:0; }
+    .promptInner p{ margin: 0; }
     .promptInner p + p{ margin-top: 6px; }
 
     .promptText{
@@ -148,7 +138,7 @@
     }
 
     .instruction{
-      margin-top: 8px;
+      margin-top: 6px;
       padding: 10px;
       border-radius: var(--radiusSm);
       border:1px solid rgba(37,99,235,.20);
@@ -157,7 +147,7 @@
       color:#1f3b7a;
     }
 
-    /* Question blocks */
+    /* Question block (same styling system as Task 3 index) */
     .qBlock{
       border:1px solid var(--border);
       border-radius: var(--radius);
@@ -193,7 +183,8 @@
       display:flex;
       gap:8px;
       align-items:flex-start;
-      color:#374151;
+      color:#111827;
+      line-height: 1.6;
     }
     .questionIcon{
       font-size:16px;
@@ -201,7 +192,12 @@
       flex: 0 0 auto;
     }
 
-    /* Controls panel */
+    audio{
+      width:100%;
+      border-radius: 12px;
+    }
+
+    /* Panel */
     .panel{
       margin-top: 14px;
       border:1px solid var(--border);
@@ -243,7 +239,9 @@
       display:flex;
       gap:10px;
       flex-wrap:wrap;
+      align-items:center;
     }
+
     button{
       border:0;
       border-radius: 12px;
@@ -260,16 +258,13 @@
     .btnPrimary{ background: var(--primary); color:#fff; }
     .btnPrimary:hover{ background: var(--primaryHover); }
 
-    .btnDanger{
-      background: var(--dangerBg);
-      color: var(--dangerText);
-      border:1px solid var(--dangerBorder);
-    }
-    .btnDanger:hover{ background: var(--dangerBorder); }
+    /* Stop button (solid red like attached index) */
+    .btnDanger{ background:#ef4444; color:#fff; }
+    .btnDanger:hover{ background:#dc2626; }
 
     .btnNeutral{
       background: var(--soft);
-      color:#1f2937;
+      color: #1f2937;
       border:1px solid #d1d5db;
     }
     .btnNeutral:hover{ background: var(--softHover); }
@@ -279,9 +274,9 @@
       color: var(--successText);
       border:1px solid var(--successBorder);
     }
-    .btnSuccess:hover{ background:#bbf7d0; }
+    .btnSuccess:hover{ background: #bbf7d0; }
 
-    /* Audio block */
+    /* Player block */
     .audioBlock{
       margin-top: 12px;
       padding: 12px;
@@ -289,54 +284,46 @@
       border:1px solid var(--border);
       background:#fafafa;
     }
-    audio{
-      width:100%;
-      margin-top: 6px;
-      border-radius: 12px;
+
+    /* Bottom action buttons inside audioBlock */
+    .bottomActions{
+      margin-top: 10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
     }
 
-    /* Outline buttons (EXACT from attached index) */
     .btnOutline{
-      display:flex;
+      display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      width:100%;
+      padding: 11px 14px;
       border-radius: 12px;
-      padding: 12px 14px;
+      border:1px solid #cbd5e1;
+      background:#f8fafc;
+      color:#1f2937;
+      font-weight: 750;
       font-size: 14px;
-      font-weight: 800;
-      border:1px solid rgba(37,99,235,.30);
-      background: rgba(37,99,235,.06);
-      color:#0f2a73;
       cursor:pointer;
       text-decoration:none;
-      transition: background .15s ease, border-color .15s ease, transform .02s ease, opacity .15s ease;
+      transition: background .15s ease, transform .02s ease, opacity .15s ease;
     }
-    .btnOutline:hover{
-      background: rgba(37,99,235,.10);
-      border-color: rgba(37,99,235,.45);
-    }
+    .btnOutline:hover{ background:#eef2f7; }
     .btnOutline:active{ transform: translateY(1px); }
     .btnOutline[aria-disabled="true"]{
       opacity:.55;
       cursor:not-allowed;
       pointer-events:none;
     }
-    .btnOutlineReturn{
-      background: rgba(255,255,255,.85);
-      border-color: rgba(37,99,235,.40);
-    }
 
-    .actionsRow{
-      display:flex;
-      gap:10px;
-      margin-top: 10px;
-      flex-wrap:wrap;
+    .btnOutlineReturn{
+      border-color:#a5b4fc;
+      color:#1e3a8a;
+      background:#f1f5f9;
     }
-    .actionsRow > *{
-      flex: 1 1 240px;
-    }
+    .btnOutlineReturn:hover{ background:#e0e7ff; }
 
     /* Saved takes */
     .saved{
@@ -367,15 +354,6 @@
       flex-direction:column;
       gap: 10px;
     }
-    .savedEmpty{
-      border:1px dashed var(--border);
-      border-radius: var(--radius);
-      padding: 14px;
-      background: #fff;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
     .savedItem{
       border:1px solid var(--border);
       border-radius: var(--radius);
@@ -405,20 +383,19 @@
       gap:8px;
       flex-wrap:wrap;
     }
-
     .linkBtn{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding: 11px 14px;
+      padding: 9px 12px;
       border:1px solid #cbd5e1;
       border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px;
       text-decoration:none;
       color:#1f2937;
       background:#f8fafc;
       cursor:pointer;
+      font-weight: 650;
     }
     .linkBtn:hover{ background:#eef2f7; }
     .dangerLink{
@@ -428,19 +405,14 @@
     }
     .dangerLink:hover{ background:#ffecec; }
 
+    /* Return button placement: inside Saved takes block */
     .savedFooter{
-      margin-top: 12px;
       display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end; /* return button placement like attached */
-    }
-    .savedFooter .btnOutline{
-      width:auto;
-      min-width: 260px;
+      justify-content:flex-end;
+      margin-top: 12px;
     }
 
-    /* Modal overlay */
+    /* Modal */
     .overlay{
       position:fixed;
       inset:0;
@@ -500,24 +472,23 @@
               </div>
             </div>
 
-            <p class="promptText">Play the audio question below, then prepare your opinion.</p>
+            <p class="promptText">Play the audio question below. When you're ready, record your opinion.</p>
 
-            <!-- Single question block (same component as Task 3) -->
-            <div class="qBlock" aria-label="Question">
-              <div class="qHeader"><span class="qNum">Q</span> Question</div>
+            <div class="qBlock">
+              <div class="qHeader"><span class="qNum">1</span> Question</div>
               <audio controls preload="metadata">
                 <source src="toeic-speaking-task-5.mp3" type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
               <div class="questionText">
                 <span class="questionIcon" aria-hidden="true">💬</span>
-                Some companies are considering a four-day work week. Do you think this is a good idea?
-                Explain your opinion and give reasons and examples to support it.
+                <span>Some companies are considering a four-day work week. Do you think this is a good idea? Explain your opinion and give reasons and examples to support it.</span>
               </div>
             </div>
 
             <div class="instruction">
-              ⚠️ You have <strong>15 seconds</strong> to prepare. You will then have <strong>60 seconds</strong> to respond.
+              ⚠️ You have <strong>15 seconds</strong> to prepare.
+              You will then have <strong>60 seconds</strong> to respond.
             </div>
           </div>
         </section>
@@ -540,12 +511,12 @@
             <div class="statusLine">Listen to your take:</div>
             <audio id="player" controls></audio>
 
-            <!-- EXACT placement like attached: only download here -->
-            <div class="actionsRow">
-              <a id="downloadLink" class="btnOutline" href="#" aria-disabled="true">⬇️ Download current take</a>
+            <div class="bottomActions">
+              <a id="downloadBtn" class="btnOutline" href="#" aria-disabled="true">⬇️ Download current take</a>
             </div>
           </div>
         </section>
+
       </div>
 
       <!-- Saved takes -->
@@ -554,12 +525,10 @@
           <h3>Saved takes</h3>
           <p class="savedNote">💡 Tip: If you’re using a shared computer, remove your takes before leaving.</p>
         </div>
-
         <div class="savedList" id="savedList"></div>
 
-        <!-- EXACT placement like attached: Return button lives in Saved area -->
         <div class="savedFooter">
-          <a id="returnLink" class="btnOutline btnOutlineReturn" href="#">↩️ Return to the module</a>
+          <a id="returnBtn" class="btnOutline btnOutlineReturn" href="#">↩️ Return to the module</a>
         </div>
       </div>
     </div>
@@ -635,24 +604,24 @@
     /***********************
      * UI + Recorder
      ***********************/
-    const startBtn = document.getElementById("start");
-    const stopBtn  = document.getElementById("stop");
-    const resetBtn = document.getElementById("reset");
-    const keepBtn  = document.getElementById("keep");
+    const startBtn  = document.getElementById("start");
+    const stopBtn   = document.getElementById("stop");
+    const resetBtn  = document.getElementById("reset");
+    const keepBtn   = document.getElementById("keep");
 
-    const downloadLink = document.getElementById("downloadLink");
-    const returnLink   = document.getElementById("returnLink");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const returnBtn = document.getElementById("returnBtn");
 
-    const player   = document.getElementById("player");
-    const timerEl  = document.getElementById("timer");
-    const statusEl = document.getElementById("status");
-    const savedList= document.getElementById("savedList");
+    const player    = document.getElementById("player");
+    const timerEl   = document.getElementById("timer");
+    const statusEl  = document.getElementById("status");
+    const savedList = document.getElementById("savedList");
 
-    const overlay  = document.getElementById("overlay");
-    const okBtn    = document.getElementById("okBtn");
+    const overlay   = document.getElementById("overlay");
+    const okBtn     = document.getElementById("okBtn");
 
-    const stateChip= document.getElementById("stateChip");
-    const stateText= document.getElementById("stateText");
+    const stateChip = document.getElementById("stateChip");
+    const stateText = document.getElementById("stateText");
 
     let mediaRecorder = null;
     let chunks = [];
@@ -670,6 +639,13 @@
       const s = sec % 60;
       timerEl.textContent = `${pad(m)}:${pad(s)}`;
     }
+    function startTimer(){
+      if(timerInterval) return;
+      timerInterval = setInterval(() => {
+        seconds++;
+        setTimer(seconds);
+      }, 1000);
+    }
     function stopTimer(){
       if(timerInterval){
         clearInterval(timerInterval);
@@ -682,7 +658,6 @@
         stream = null;
       }
     }
-
     function setState(mode){
       stateChip.classList.remove("recording","done");
       if(mode === "recording"){
@@ -696,14 +671,9 @@
       }
     }
 
-    function disableDownload(){
-      downloadLink.setAttribute("aria-disabled","true");
-      downloadLink.href = "#";
-    }
-    function enableDownload(url, filename){
-      downloadLink.removeAttribute("aria-disabled");
-      downloadLink.href = url;
-      downloadLink.download = filename;
+    function fmtDuration(sec){
+      const s = Number.isFinite(sec) ? sec : 0;
+      return `${Math.max(0, Math.round(s))}s`;
     }
 
     function resetCurrentTakeUI(){
@@ -714,7 +684,10 @@
       }
       player.removeAttribute("src");
       player.load();
-      disableDownload();
+
+      downloadBtn.setAttribute("aria-disabled","true");
+      downloadBtn.href = "#";
+
       keepBtn.disabled = true;
       resetBtn.disabled = true;
     }
@@ -723,7 +696,6 @@
       stopTimer();
       seconds = 0;
       setTimer(0);
-
       statusEl.textContent = "Ready";
       setState("ready");
 
@@ -744,22 +716,25 @@
       return types.find(t => window.MediaRecorder && MediaRecorder.isTypeSupported(t)) || "";
     }
 
+    function downloadBlob(blob, filename){
+      const a = document.createElement("a");
+      const url = URL.createObjectURL(blob);
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 500);
+    }
+
     function showOverlay(){ overlay.style.display = "flex"; }
     function hideOverlay(){ overlay.style.display = "none"; }
 
     okBtn.addEventListener("click", hideOverlay);
-    overlay.addEventListener("click", (e) => {
-      if(e.target === overlay) hideOverlay();
-    });
-
-    function fmtDuration(sec){
-      return `${sec}s`;
-    }
+    overlay.addEventListener("click", (e) => { if(e.target === overlay) hideOverlay(); });
 
     function renderSavedTake({ id, blob, durationSec, createdAt }, takeNumber){
       const savedUrl = URL.createObjectURL(blob);
-      const savedAt = createdAt ? new Date(createdAt) : null;
-      const savedText = savedAt ? `saved ${savedAt.toLocaleString()}` : "";
 
       const item = document.createElement("div");
       item.className = "savedItem";
@@ -770,17 +745,22 @@
 
       const label = document.createElement("div");
       label.className = "savedLabel";
-      label.innerHTML = `<strong>Take ${takeNumber}</strong>
-        <span class="tag">• ${fmtDuration(durationSec)}${savedText ? " • " + savedText : ""}</span>`;
+
+      const savedWhen = createdAt ? new Date(createdAt).toLocaleString() : "";
+      const dur = fmtDuration(durationSec);
+
+      label.innerHTML =
+        `<strong>Take ${takeNumber}</strong> ` +
+        `<span class="tag">• ${dur}${savedWhen ? ` • saved ${savedWhen}` : ""}</span>`;
 
       const actions = document.createElement("div");
       actions.className = "savedActions";
 
-      const downloadBtn = document.createElement("a");
-      downloadBtn.className = "linkBtn";
-      downloadBtn.href = savedUrl;
-      downloadBtn.download = `task5-take-${takeNumber}.webm`;
-      downloadBtn.textContent = "⬇️ Download";
+      const downloadA = document.createElement("a");
+      downloadA.className = "linkBtn";
+      downloadA.href = savedUrl;
+      downloadA.download = `task5-take-${takeNumber}.webm`;
+      downloadA.textContent = "⬇️ Download";
 
       const removeBtn = document.createElement("a");
       removeBtn.href = "#";
@@ -792,10 +772,10 @@
         URL.revokeObjectURL(savedUrl);
         item.remove();
         statusEl.textContent = "Take removed.";
-        await loadSavedTakes(); // renumber + empty state
+        await loadSavedTakes();
       };
 
-      actions.appendChild(downloadBtn);
+      actions.appendChild(downloadA);
       actions.appendChild(removeBtn);
 
       top.appendChild(label);
@@ -807,6 +787,7 @@
 
       item.appendChild(top);
       item.appendChild(audio);
+
       return item;
     }
 
@@ -817,15 +798,13 @@
 
       if(takes.length === 0){
         const empty = document.createElement("div");
-        empty.className = "savedEmpty";
+        empty.className = "statusLine";
         empty.textContent = "No takes saved yet.";
         savedList.appendChild(empty);
         return;
       }
 
-      takes.forEach((t, idx) => {
-        savedList.appendChild(renderSavedTake(t, idx + 1));
-      });
+      takes.forEach((t, idx) => savedList.appendChild(renderSavedTake(t, idx + 1)));
     }
 
     // Init
@@ -839,6 +818,7 @@
         statusEl.textContent = "Requesting microphone…";
 
         stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
         const mimeType = getSupportedMimeType();
         mediaRecorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
 
@@ -851,12 +831,8 @@
 
           seconds = 0;
           setTimer(0);
-
           stopTimer();
-          timerInterval = setInterval(() => {
-            seconds++;
-            setTimer(seconds);
-          }, 1000);
+          startTimer();
         };
 
         mediaRecorder.ondataavailable = (e) => {
@@ -865,23 +841,22 @@
 
         mediaRecorder.onstop = () => {
           stopTimer();
+
           stopBtn.disabled = true;
           startBtn.disabled = false;
 
-          statusEl.textContent = "Saved locally (not submitted).";
+          statusEl.textContent = "Recording finished";
           setState("done");
-
           resetBtn.disabled = false;
 
           const blob = new Blob(chunks, { type: mediaRecorder.mimeType || "audio/webm" });
           currentBlob = blob;
+
+          if(currentUrl) URL.revokeObjectURL(currentUrl);
           currentUrl = URL.createObjectURL(blob);
           player.src = currentUrl;
 
-          enableDownload(
-            currentUrl,
-            `task5-take-${new Date().toISOString().slice(0,19).replace(/[:T]/g,"-")}.webm`
-          );
+          downloadBtn.setAttribute("aria-disabled","false");
           keepBtn.disabled = false;
 
           stopMic();
@@ -893,7 +868,7 @@
         stopTimer();
         stopMic();
         statusEl.textContent = "Microphone blocked or not available";
-        alert("Microphone access is blocked. Please allow microphone permission (lock icon) and reload the page.");
+        alert("Microphone access is blocked. Please allow microphone permission and reload the page.");
       }
     };
 
@@ -917,30 +892,44 @@
 
     resetBtn.onclick = () => resetUI();
 
+    downloadBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if(downloadBtn.getAttribute("aria-disabled") === "true") return;
+      if(!currentBlob) return;
+
+      const filename = `task5-take-${new Date().toISOString().slice(0,19).replace(/[:T]/g,"-")}.webm`;
+      downloadBlob(currentBlob, filename);
+      statusEl.textContent = "Downloaded current take.";
+    });
+
+    returnBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      statusEl.textContent = "Returning to the module…";
+      window.close();
+
+      setTimeout(() => {
+        showOverlay();
+        statusEl.textContent = "Please close this tab to return to the module.";
+      }, 250);
+    });
+
     keepBtn.onclick = async () => {
       if(!currentBlob) return;
+
       try{
         statusEl.textContent = "Saving take…";
         await addTakeToDB({ blob: currentBlob, durationSec: seconds });
         await loadSavedTakes();
-        statusEl.textContent = "Take saved on this device.";
+
+        statusEl.textContent = "Take saved. Click Start recording for a new attempt.";
         keepBtn.disabled = true;
+        setState("done");
       } catch(err){
         console.error(err);
         statusEl.textContent = "Save failed.";
         alert("Saving failed. Your browser may be blocking storage for this page.");
       }
     };
-
-    returnLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      statusEl.textContent = "Returning to the module…";
-      window.close();
-      setTimeout(() => {
-        showOverlay();
-        statusEl.textContent = "Please close this tab to return to the module.";
-      }, 250);
-    });
   </script>
 </body>
 </html>
