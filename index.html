@@ -5,47 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TOEIC Speaking – Express an Opinion</title>
 
-  <!--
-    ✅ This file uses the EXACT same formatting system as your attached index
-    (same CSS structure + same component classes, only content adapted to Task 5).
-  -->
+  <!-- ✅ SAME CSS/FORMAT as the attached index (Task 3) -->
   <style>
     :root{
-      /* === Rise-like palette (easy to tweak) === */
+      /* Same formatting system as Task 3 (attached) */
       --bg:#f6f7f9;
       --surface:#ffffff;
       --text:#111827;
       --muted:#6b7280;
       --border:#e5e7eb;
 
-      /* Primary */
       --primary:#2563eb;
       --primaryHover:#1e4fd6;
 
-      /* Neutrals */
-      --soft:#f3f4f6;
-      --softHover:#e9edf3;
-
-      /* Accents */
       --accent:#e7f0ff;
       --accentBorder:#bcd6ff;
-      --success:#16a34a;
-      --danger:#ef4444;
+
+      --soft:#f1f5f9;
+      --softHover:#e5e7eb;
+
+      --dangerBg:#ef4444;
+      --dangerText:#ffffff;
+
+      --successBg:#dcfce7;
+      --successText:#166534;
+      --successBorder:#86efac;
+
+      --secondaryBg:#f1f5f9;
+      --secondaryText:#1e3a8a;
+      --secondaryBorder:#c7d2fe;
 
       --shadow:0 10px 26px rgba(17,24,39,.08);
       --radius:16px;
       --radiusSm:12px;
-
       --focus: 0 0 0 3px rgba(37,99,235,.22);
     }
 
     *{ box-sizing:border-box; }
-
     body{
       margin:0;
       background:var(--bg);
       color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+        "Apple Color Emoji","Segoe UI Emoji";
       line-height:1.5;
     }
 
@@ -55,7 +57,6 @@
       padding: 26px 16px 72px;
     }
 
-    /* Header */
     .header{ margin-bottom: 14px; }
     .title{
       margin:0;
@@ -70,7 +71,6 @@
       max-width: 75ch;
     }
 
-    /* Main card */
     .card{
       background:var(--surface);
       border:1px solid var(--border);
@@ -99,7 +99,6 @@
       opacity: .95;
     }
     .promptInner{ padding-left: 10px; }
-
     .promptHead{
       display:flex;
       align-items:center;
@@ -134,10 +133,10 @@
       width:8px;height:8px;border-radius:999px;
       background:#cbd5e1;
     }
-    .state.recording .dot{ background: var(--danger); }
-    .state.done .dot{ background: var(--success); }
+    .state.recording .dot{ background:#ef4444; }
+    .state.done .dot{ background:#16a34a; }
 
-    .promptInner p{ margin:0; }
+    .promptInner p{ margin: 0; }
     .promptInner p + p{ margin-top: 6px; }
 
     .promptText{
@@ -145,20 +144,9 @@
       font-size: 14px;
       line-height: 1.6;
       white-space: pre-wrap;
-      font-style: italic;
     }
 
-    .instruction{
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: var(--radiusSm);
-      border:1px solid rgba(37,99,235,.20);
-      background: rgba(255,255,255,.75);
-      font-size: 13px;
-      color:#1f3b7a;
-    }
-
-    /* Question blocks (same system as attached index) */
+    /* Question blocks (same as Task 3) */
     .qList{
       margin-top: 10px;
       display:flex;
@@ -180,6 +168,19 @@
       margin: 0 0 8px;
       color: #6b7280;
     }
+    .qNum{
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:12px;
+      background: rgba(37,99,235,.10);
+      color: #1d4ed8;
+      border:1px solid rgba(37,99,235,.18);
+      flex: 0 0 auto;
+    }
     .questionText{
       margin: 10px 0 0;
       font-size: 14px;
@@ -187,7 +188,6 @@
       gap:8px;
       align-items:flex-start;
       color:#374151;
-      line-height: 1.6;
     }
     .questionIcon{
       font-size:16px;
@@ -195,7 +195,17 @@
       flex: 0 0 auto;
     }
 
-    /* Controls area */
+    .instruction{
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: var(--radiusSm);
+      border:1px solid rgba(37,99,235,.20);
+      background: rgba(255,255,255,.75);
+      font-size: 13px;
+      color:#1f3b7a;
+    }
+
+    /* Controls panel */
     .panel{
       margin-top: 14px;
       border:1px solid var(--border);
@@ -203,7 +213,6 @@
       padding: 16px;
       background:#fff;
     }
-
     .metaRow{
       display:flex;
       align-items:center;
@@ -234,7 +243,6 @@
       font-size: 13px;
     }
 
-    /* Buttons */
     .controls{
       display:flex;
       gap:10px;
@@ -257,27 +265,40 @@
     .btnPrimary:hover{ background: var(--primaryHover); }
 
     .btnDanger{
-      background:#fee2e2;
-      color:#b91c1c;
-      border:1px solid #fecaca;
+      background: var(--dangerBg);
+      color: var(--dangerText);
     }
-    .btnDanger:hover{ background:#fecaca; }
+    .btnDanger:hover{ background:#dc2626; }
 
     .btnNeutral{
-      background:#f1f5f9;
-      color:#1f2937;
+      background: var(--soft);
+      color: #1f2937;
       border:1px solid #d1d5db;
     }
-    .btnNeutral:hover{ background:#e5e7eb; }
+    .btnNeutral:hover{ background: var(--softHover); }
 
     .btnSuccess{
-      background:#dcfce7;
-      color:#166534;
-      border:1px solid #86efac;
+      background: var(--successBg);
+      color: var(--successText);
+      border:1px solid var(--successBorder);
     }
-    .btnSuccess:hover{ background:#bbf7d0; }
+    .btnSuccess:hover{ background: #bbf7d0; }
 
-    /* Audio block */
+    .btnDownload{
+      background:#f8fafc;
+      color:#1f2937;
+      border:1px solid #cbd5e1;
+    }
+    .btnDownload:hover{ background:#eef2f7; }
+
+    .btnReturn{
+      background: var(--secondaryBg);
+      color: var(--secondaryText);
+      border:1px solid var(--secondaryBorder);
+      font-weight: 700;
+    }
+    .btnReturn:hover{ background:#e0e7ff; }
+
     .audioBlock{
       margin-top: 12px;
       padding: 12px;
@@ -290,39 +311,13 @@
       margin-top: 6px;
       border-radius: 12px;
     }
-
-    .bottomActions{
+    .actionsRow{
       display:flex;
-      gap:12px;
-      margin-top: 12px;
+      gap:10px;
       flex-wrap:wrap;
+      margin-top: 10px;
     }
-    .bottomActions > *{
-      flex: 1 1 260px;
-    }
-
-    .btnOutline{
-      background:#f8fafc;
-      color:#6b7280;
-      border:1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 11px 14px;
-      font-size: 14px;
-      font-weight: 750;
-      cursor:pointer;
-      transition: background .15s ease, transform .02s ease, box-shadow .15s ease, opacity .15s ease;
-    }
-    .btnOutline:hover{ background:#eef2f7; }
-    .btnOutline:disabled{ opacity:.55; cursor:not-allowed; }
-
-    .btnOutlineReturn{
-      border-color: rgba(37,99,235,.35);
-      color: #1e3a8a;
-      background: rgba(37,99,235,.06);
-    }
-    .btnOutlineReturn:hover{
-      background: rgba(37,99,235,.10);
-    }
+    .actionsRow button{ flex: 1 1 240px; }
 
     /* Saved takes */
     .saved{
@@ -348,7 +343,6 @@
       color: var(--muted);
       font-size: 13px;
     }
-
     .savedList{
       display:flex;
       flex-direction:column;
@@ -383,23 +377,21 @@
       gap:8px;
       flex-wrap:wrap;
     }
-
     .linkBtn{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding: 11px 14px;
+      padding: 9px 12px;
       border:1px solid #cbd5e1;
       border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px;
       text-decoration:none;
       color:#1f2937;
       background:#f8fafc;
       cursor:pointer;
+      font-weight: 650;
     }
     .linkBtn:hover{ background:#eef2f7; }
-
     .dangerLink{
       border-color:#fecaca;
       color:#991b1b;
@@ -455,7 +447,8 @@
 
     <div class="card">
       <div class="section">
-        <!-- Prompt -->
+
+        <!-- Prompt (Task 3 structure) -->
         <section class="prompt" id="promptBox" aria-labelledby="promptTitle">
           <div class="promptInner">
             <div class="promptHead">
@@ -466,26 +459,21 @@
               </div>
             </div>
 
-            <p class="promptText">Play the audio question below, then prepare your opinion.</p>
+            <p class="promptText">Play the audio question below. When you're ready, record your answer.</p>
 
-            <!-- Question (same block system as the attached index) -->
             <div class="qList" aria-label="Question">
               <div class="qBlock">
-                <div class="qHeader">
-                  <span aria-hidden="true">🔊</span> Question
-                </div>
-
+                <div class="qHeader"><span class="qNum">1</span> Question</div>
                 <audio controls preload="metadata">
                   <source src="toeic-speaking-task-5.mp3" type="audio/mpeg" />
                   Your browser does not support the audio element.
                 </audio>
-
                 <div class="questionText">
                   <span class="questionIcon" aria-hidden="true">💬</span>
-                  <div>
+                  <span>
                     Some companies are considering a four-day work week. Do you think this is a good idea?
                     Explain your opinion and give reasons and examples to support it.
-                  </div>
+                  </span>
                 </div>
               </div>
             </div>
@@ -499,9 +487,7 @@
         <!-- Controls -->
         <section class="panel" aria-label="Recording controls">
           <div class="metaRow">
-            <div class="timerChip">
-              <span class="timer" id="timer">00:00</span>
-            </div>
+            <div class="timerChip"><span class="timer" id="timer">00:00</span></div>
             <div class="statusLine" id="status">Ready</div>
           </div>
 
@@ -516,9 +502,9 @@
             <div class="statusLine">Listen to your take:</div>
             <audio id="player" controls></audio>
 
-            <div class="bottomActions">
-              <button id="download" class="btnOutline" disabled>⬇️ Download this take</button>
-              <button id="returnBtn" class="btnOutline btnOutlineReturn">↩️ Return to the module</button>
+            <div class="actionsRow">
+              <button id="download" class="btnDownload" disabled>⬇️ Download this take</button>
+              <button id="returnBtn" class="btnReturn">↩️ Return to the module</button>
             </div>
           </div>
         </section>
@@ -603,7 +589,7 @@
     }
 
     /***********************
-     * UI + Recorder
+     * Recorder UI + chip
      ***********************/
     const startBtn  = document.getElementById("start");
     const stopBtn   = document.getElementById("stop");
@@ -634,20 +620,17 @@
     let currentUrl = null;
 
     function pad(n){ return String(n).padStart(2,"0"); }
-
     function setTimer(sec){
       const m = Math.floor(sec / 60);
       const s = sec % 60;
       timerEl.textContent = `${pad(m)}:${pad(s)}`;
     }
-
     function stopTimer(){
       if(timerInterval){
         clearInterval(timerInterval);
         timerInterval = null;
       }
     }
-
     function stopMic(){
       if(stream){
         stream.getTracks().forEach(t => t.stop());
@@ -685,7 +668,6 @@
       stopTimer();
       seconds = 0;
       setTimer(0);
-
       statusEl.textContent = "Ready";
       setState("ready");
 
@@ -773,6 +755,7 @@
 
       item.appendChild(top);
       item.appendChild(audio);
+
       return item;
     }
 
@@ -780,9 +763,7 @@
       savedList.innerHTML = "";
       const takes = await getAllTakesFromDB();
       takes.sort((a,b) => a.createdAt - b.createdAt);
-      takes.forEach((t, idx) => {
-        savedList.appendChild(renderSavedTake(t, idx + 1));
-      });
+      takes.forEach((t, idx) => savedList.appendChild(renderSavedTake(t, idx + 1)));
     }
 
     // Init
@@ -796,6 +777,7 @@
         statusEl.textContent = "Requesting microphone…";
 
         stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
         const mimeType = getSupportedMimeType();
         mediaRecorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
 
@@ -825,13 +807,14 @@
           stopBtn.disabled = true;
           startBtn.disabled = false;
 
-          statusEl.textContent = "Saved locally (not submitted).";
+          statusEl.textContent = "Recording finished";
           setState("done");
 
           resetBtn.disabled = false;
 
           const blob = new Blob(chunks, { type: mediaRecorder.mimeType || "audio/webm" });
           currentBlob = blob;
+
           currentUrl = URL.createObjectURL(blob);
           player.src = currentUrl;
 
@@ -881,6 +864,7 @@
       e.preventDefault();
       statusEl.textContent = "Returning to the module…";
       window.close();
+
       setTimeout(() => {
         showOverlay();
         statusEl.textContent = "Please close this tab to return to the module.";
@@ -897,6 +881,7 @@
       } catch(err){
         console.error(err);
         statusEl.textContent = "Save failed.";
+        alert("Saving failed. Your browser may be blocking storage for this page.");
       }
     };
   </script>
